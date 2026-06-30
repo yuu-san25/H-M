@@ -1,5 +1,6 @@
 import { Star, MapPin, ArrowRight, ShieldCheck, Clock, CheckCircle } from 'lucide-react';
 import { motion } from 'motion/react';
+import landCruiserV8Img from '../assets/images/land_cruiser_v8_1782836320221.jpg';
 
 interface ShowcaseBentoProps {
   onInstantBook: () => void;
@@ -42,7 +43,7 @@ export default function ShowcaseBento({ onInstantBook, onFilterCategory, onScrol
             
             {/* Background image */}
             <img 
-              src="/src/assets/images/land_cruiser_v8_1782836320221.jpg" 
+              src={landCruiserV8Img} 
               alt="Toyota Land Cruiser LC300"
               className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 opacity-60"
             />

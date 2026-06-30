@@ -1,5 +1,15 @@
 import { Car, Review, FAQ } from './types';
 
+import hondaCityImg from './assets/images/honda_city_white_1782839333991.jpg';
+import toyotaGliImg from './assets/images/toyota_gli_white_1782839354205.jpg';
+import toyotaGrandeImg from './assets/images/toyota_grande_1782836361048.jpg';
+import hondaCivicImg from './assets/images/honda_civic_white_1782839372317.jpg';
+import hyundaiSonataImg from './assets/images/hyundai_sonata_white_1782839420856.jpg';
+import toyotaFortunerImg from './assets/images/toyota_fortuner_white_1782839389083.jpg';
+import toyotaPradoBlackImg from './assets/images/toyota_prado_black_1782839405277.jpg';
+import landCruiserV8Img from './assets/images/land_cruiser_v8_1782836320221.jpg';
+import audiA6WhiteImg from './assets/images/audi_a6_white_1782839438456.jpg';
+
 export const FLEET: Car[] = [
   {
     id: 'honda-city',
@@ -13,7 +23,7 @@ export const FLEET: Car[] = [
       'Clean white sedan parked indoors',
       'Ideal for comfortable city travel & business trips'
     ],
-    image: '/src/assets/images/honda_city_white_1782839333991.jpg',
+    image: hondaCityImg,
     specs: {
       engine: '1.2L i-VTEC',
       transmission: 'CVT Automatic',
@@ -35,7 +45,7 @@ export const FLEET: Car[] = [
       'Parked on beautifully manicured green lawn',
       'Perfect for family trips and daily executive commutes'
     ],
-    image: '/src/assets/images/toyota_gli_white_1782839354205.jpg',
+    image: toyotaGliImg,
     specs: {
       engine: '1.3L VVT-i',
       transmission: 'Automatic / Manual',
@@ -57,7 +67,7 @@ export const FLEET: Car[] = [
       'White color luxury sedan',
       'Sunroof, leather interior and state-of-the-art drive'
     ],
-    image: '/src/assets/images/toyota_grande_1782836361048.jpg',
+    image: toyotaGrandeImg,
     specs: {
       engine: '1.8L Altis Dual VVT-i',
       transmission: '7-speed CVT-i Sport',
@@ -79,7 +89,7 @@ export const FLEET: Car[] = [
       'Stylish white design & modern chassis layout',
       'Ideal for elite business travel & wedding ceremonies'
     ],
-    image: '/src/assets/images/honda_civic_white_1782839372317.jpg',
+    image: hondaCivicImg,
     specs: {
       engine: '1.5L Turbocharged',
       transmission: 'Automatic Sport CVT',
@@ -101,7 +111,7 @@ export const FLEET: Car[] = [
       'Front-view pristine white modern architecture',
       'Panoramic sunroof, ambient lights & tech console'
     ],
-    image: '/src/assets/images/hyundai_sonata_white_1782839420856.jpg',
+    image: hyundaiSonataImg,
     specs: {
       engine: '2.5L DOHC Smartstream',
       transmission: '6-Speed Shifttronic',
@@ -123,7 +133,7 @@ export const FLEET: Car[] = [
       'High road elevation, outstanding visibility',
       'Perfect for rugged long distance tours & company visits'
     ],
-    image: '/src/assets/images/toyota_fortuner_white_1782839389083.jpg',
+    image: toyotaFortunerImg,
     specs: {
       engine: '2.7L Petrol / 2.8L Diesel',
       transmission: '6-Speed Automatic 4x4',
@@ -145,7 +155,7 @@ export const FLEET: Car[] = [
       'Stunning luxurious black exterior finish',
       'Ultimate ride quality & terrain adaptability'
     ],
-    image: '/src/assets/images/toyota_prado_black_1782839405277.jpg',
+    image: toyotaPradoBlackImg,
     specs: {
       engine: '3.0L Turbo Diesel / 2.7L Petrol',
       transmission: 'Automatic with low-range transfer',
@@ -167,7 +177,7 @@ export const FLEET: Car[] = [
       'Primacy status black exterior parked at executive villa',
       'Prestige indicator, extreme luxury and safety armor'
     ],
-    image: '/src/assets/images/land_cruiser_v8_1782836320221.jpg',
+    image: landCruiserV8Img,
     specs: {
       engine: '4.6L V8 / 3.5L Twin-Turbo V6',
       transmission: '8-Speed/10-Speed Automatic 4WD',
@@ -189,7 +199,7 @@ export const FLEET: Car[] = [
       'Front-view white executive prestige body',
       'Matrix LEDs, Virtual Cockpit & Air Suspension'
     ],
-    image: '/src/assets/images/audi_a6_white_1782839438456.jpg',
+    image: audiA6WhiteImg,
     specs: {
       engine: '2.0L TFSI Turbocharged',
       transmission: '7-Speed S-Tronic Dual-Clutch',

@@ -2,6 +2,7 @@ import { useState, FormEvent } from 'react';
 import { motion } from 'motion/react';
 import { Calendar, ShieldAlert, ChevronRight, Compass, ShieldCheck } from 'lucide-react';
 import { CONTACT_INFO, FLEET } from '../data';
+import showroomFleetHeroImg from '../assets/images/showroom_fleet_hero_1782841953143.jpg';
 
 interface HeroProps {
   onSearch: (filters: { category: string; driverOnly: boolean }) => void;
@@ -52,7 +53,7 @@ export default function Hero({ onSearch, onInstantBook }: HeroProps) {
         <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-orange-600/[0.06] rounded-full blur-[100px] z-10 pointer-events-none" />
         
         <img
-          src="/src/assets/images/showroom_fleet_hero_1782841953143.jpg"
+          src={showroomFleetHeroImg}
           alt="Luxury Car Rental Islamabad Rawalpindi Lahore"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center transform scale-102"
@@ -272,7 +273,7 @@ export default function Hero({ onSearch, onInstantBook }: HeroProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent pointer-events-none" />
           
           <img
-            src="/src/assets/images/showroom_fleet_hero_1782841953143.jpg"
+            src={showroomFleetHeroImg}
             alt="H&M Premium Showroom Fleet"
             className="w-full h-full object-cover object-center"
           />
