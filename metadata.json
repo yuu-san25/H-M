@@ -1,0 +1,6 @@
+{
+  "name": "H&M Brothers Rental And tourism",
+  "description": "Premium car rental and tourism agency in Saddar, Rawalpindi, Pakistan featuring luxury and high-end SUVs and sedans including Prado, Land Cruiser, Grande, and Range Rover.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
