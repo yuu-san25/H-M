@@ -115,17 +115,17 @@ export default function CitiesAndBooking({ onSuccessBooking, onInstantBook }: Ci
                   <p className="text-xs text-neutral-300 leading-relaxed font-sans max-w-md mx-auto">
                     Thank you {fullName}. Your booking request for the <strong className="text-amber-400">{vehicle}</strong> has been logged. We will connect with you on <strong className="text-amber-400">{phone}</strong> within 5 minutes.
                   </p>
-                  <div className="pt-2">
-                    <a
-                      href={`https://wa.me/923485144199?text=Hello%20H%26M%20Brothers%2C%20my%20name%20is%20${encodeURIComponent(fullName)}.%20I%20just%20submitted%20a%20booking%20request%20for%20the%20${encodeURIComponent(vehicle)}%20via%20your%20website.%20Please%20confirm%20my%20reservation.`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3 rounded-lg text-xs uppercase tracking-wider"
-                    >
-                      <MessageSquare className="w-4 h-4 fill-current" />
-                      <span>Speed Up on WhatsApp</span>
-                    </a>
-                  </div>
+                    <div className="pt-2">
+                      <a
+                        href={`https://wa.me/923485144199?text=Hello%20H%26M%20Brothers%2C%20my%20name%20is%20${encodeURIComponent(fullName)}.%20I%20just%20submitted%20a%20booking%20request%20via%20your%20website%3A%0A%0A%F0%9F%9A%97%20Vehicle%3A%20${encodeURIComponent(vehicle)}%0A%F0%9F%9B%A0%EF%B8%8F%20Service%20Type%3A%20${encodeURIComponent(tripType)}%0A%F0%9F%8C%86%20City%3A%20${encodeURIComponent(city)}%0A%F0%9F%93%8D%20Pickup%20Location%3A%20${encodeURIComponent(pickupLocation)}%20%28${encodeURIComponent(pickupDate)}%29%0A%F0%9F%8F%94%EF%B8%8F%20Drop%20Location%3A%20${encodeURIComponent(dropLocation || 'N/A')}%20%28${encodeURIComponent(dropDate || 'N/A')}%29%0A%F0%9F%93%9D%20Notes%3A%20${encodeURIComponent(notes || 'None')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3 rounded-lg text-xs uppercase tracking-wider"
+                      >
+                        <MessageSquare className="w-4 h-4 fill-current" />
+                        <span>Speed Up on WhatsApp</span>
+                      </a>
+                    </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -249,23 +249,21 @@ export default function CitiesAndBooking({ onSuccessBooking, onInstantBook }: Ci
                     </div>
                   </div>
 
-                  {/* Trip Type Checkboxes */}
+                  {/* Service / Trip Type Dropdown */}
                   <div>
-                    <label className="block text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2 font-mono">Trip Type</label>
-                    <div className="flex gap-6">
-                      {['Round Trip', 'One Way Drop'].map((type) => (
-                        <label key={type} className="flex items-center gap-2 cursor-pointer select-none text-xs text-neutral-300">
-                          <input 
-                            type="radio" 
-                            name="tripType"
-                            checked={tripType === type}
-                            onChange={() => setTripType(type)}
-                            className="w-4 h-4 border-neutral-800 bg-neutral-950 text-amber-500 focus:ring-amber-500"
-                          />
-                          <span>{type}</span>
-                        </label>
-                      ))}
-                    </div>
+                    <label className="block text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2 font-mono">Select Service Type</label>
+                    <select 
+                      value={tripType}
+                      onChange={(e) => setTripType(e.target.value)}
+                      className="w-full bg-neutral-950 text-white rounded-xl border border-neutral-800 px-4 py-3.5 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none text-sm font-medium cursor-pointer"
+                    >
+                      <option value="One Way Drop">One Way Drop</option>
+                      <option value="Round Trip">Round Trip / Full Day Rental</option>
+                      <option value="Wedding Protocol">Wedding Protocol & Decoration</option>
+                      <option value="Northern Tour">Northern Pakistan Tour</option>
+                      <option value="VIP Protocol">VIP / Corporate Protocol Convoy</option>
+                      <option value="Airport Transfer">24/7 Airport Transfer</option>
+                    </select>
                   </div>
 
                   {/* Notes */}

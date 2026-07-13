@@ -31,6 +31,7 @@ export default function BookingModal({ car, onClose }: BookingModalProps) {
   const [pickupLocation, setPickupLocation] = useState('Saddar GPO Chowk Office');
   const [destination, setDestination] = useState('Rawalpindi/Islamabad Local');
   const [withDriver, setWithDriver] = useState(car.specs.withDriverOnly);
+  const [serviceType, setServiceType] = useState('One Way Drop');
   const [notes, setNotes] = useState('');
   const [successReceipt, setSuccessReceipt] = useState<any | null>(null);
 
@@ -102,6 +103,7 @@ I want to book the following vehicle:
 🚗 *Vehicle*: ${car.name}
 👤 *Client Name*: ${fullName || 'Guest'}
 📞 *Phone*: ${phone || 'N/A'}
+🛠️ *Service Type*: ${serviceType}
 📅 *Pickup Date*: ${pickupDate}
 📅 *Dropoff Date*: ${dropoffDate} (${totalDays} Days)
 📍 *Pickup*: ${pickupLocation}
@@ -127,6 +129,7 @@ Please confirm the availability for these dates. Thanks!`;
       carName: car.name,
       fullName,
       phone,
+      serviceType,
       pickupDate,
       dropoffDate,
       days: rentalDays,
@@ -300,6 +303,25 @@ Please confirm the availability for these dates. Thanks!`;
                       className="w-full bg-neutral-950 text-white rounded-xl border border-neutral-800 pl-10 pr-4 py-3 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 outline-none text-sm font-medium"
                     />
                   </div>
+                </div>
+
+                {/* Service Type Dropdown */}
+                <div>
+                  <label className="block text-xs font-bold text-amber-400 uppercase tracking-wider mb-2 font-mono">
+                    Select Service Type
+                  </label>
+                  <select 
+                    value={serviceType}
+                    onChange={(e) => setServiceType(e.target.value)}
+                    className="w-full bg-neutral-950 text-white rounded-xl border border-neutral-800 px-4 py-3 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 outline-none text-sm font-medium cursor-pointer"
+                  >
+                    <option value="One Way Drop">One Way Drop</option>
+                    <option value="Round Trip">Round Trip / Full Day Rental</option>
+                    <option value="Wedding Protocol">Wedding Protocol & Decoration</option>
+                    <option value="Northern Tour">Northern Pakistan Tour</option>
+                    <option value="VIP Protocol">VIP / Corporate Protocol Convoy</option>
+                    <option value="Airport Transfer">24/7 Airport Transfer</option>
+                  </select>
                 </div>
 
                 {/* Dates Selection */}
@@ -515,7 +537,8 @@ Please confirm the availability for these dates. Thanks!`;
                   </div>
                   <div>
                     <span className="block font-medium uppercase text-neutral-500 font-mono">Service Configuration:</span>
-                    <p className="text-white font-bold mt-1">{successReceipt.driverOption}</p>
+                    <p className="text-amber-400 font-bold mt-1">{successReceipt.serviceType}</p>
+                    <p className="text-white font-bold mt-0.5">{successReceipt.driverOption}</p>
                     <p className="mt-0.5">Target Destination: {successReceipt.destination}</p>
                   </div>
                 </div>
