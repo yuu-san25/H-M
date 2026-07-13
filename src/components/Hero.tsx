@@ -70,61 +70,48 @@ export default function Hero({ onSearch, onInstantBook }: HeroProps) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/30 px-3 py-1.5 rounded-full text-amber-400 text-xs sm:text-sm font-semibold tracking-wider uppercase font-mono"
+            className="text-amber-500 text-xs sm:text-sm font-black tracking-[0.15em] uppercase font-mono"
           >
-            <Compass className="w-4 h-4 animate-spin-slow" />
-            <span>H&M Brothers Rental & Tourism • Rawalpindi</span>
+            PREMIUM CAR RENTAL SERVICES
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight"
+            className="font-sans text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-none uppercase"
           >
-            Experience Pakistan with <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-amber-300">
-              Elite Protocol & Comfort
-            </span>
+            TRAVEL IN COMFORT,<br />
+            <span className="text-amber-400">ARRIVE IN STYLE</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-neutral-300 text-base sm:text-lg md:text-xl max-w-xl font-normal leading-relaxed"
+            className="text-neutral-300 text-base sm:text-lg max-w-xl font-medium leading-relaxed font-sans"
           >
-            Discover Saddar’s top-rated agency with a majestic fleet of high-end Pakistani SUVs, bulletproof setups, and elite wedding cruisers. Open 24/7 at GPO Chowk.
+            We Provide Reliable, Luxury & Comfortable Car Rental Services Across Pakistan.
           </motion.p>
 
-          {/* Core USP Badges */}
+          {/* Core USP Badges from ChatGPT design */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full max-w-lg mt-2"
+            className="flex flex-wrap gap-2.5 w-full mt-2"
           >
-            <div className="flex items-center gap-2.5 text-neutral-300 bg-neutral-900/80 border border-neutral-800 p-2.5 rounded-xl">
-              <ShieldCheck className="w-5 h-5 text-amber-400 flex-shrink-0" />
-              <div className="text-left">
-                <p className="text-xs font-bold text-white leading-none">VIP Protocol</p>
-                <span className="text-[10px] text-neutral-400">Security Guard Sync</span>
+            {[
+              { icon: '🚗', label: 'Well Maintained Cars' },
+              { icon: '👨‍✈️', label: 'Professional Drivers' },
+              { icon: '⏱️', label: 'On-Time Service' },
+              { icon: '📞', label: '24/7 Support' }
+            ].map((badge) => (
+              <div key={badge.label} className="flex items-center gap-2 text-neutral-300 bg-neutral-900/90 border border-neutral-800/80 px-3.5 py-2 rounded-full text-xs font-semibold">
+                <span className="text-sm">{badge.icon}</span>
+                <span>{badge.label}</span>
               </div>
-            </div>
-            <div className="flex items-center gap-2.5 text-neutral-300 bg-neutral-900/80 border border-neutral-800 p-2.5 rounded-xl">
-              <Calendar className="w-5 h-5 text-amber-400 flex-shrink-0" />
-              <div className="text-left">
-                <p className="text-xs font-bold text-white leading-none">Open 24 Hours</p>
-                <span className="text-[10px] text-neutral-400">Instant Midnight Dispatch</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-2.5 text-neutral-300 bg-neutral-900/80 border border-neutral-800 p-2.5 rounded-xl col-span-2 sm:col-span-1">
-              <ShieldAlert className="w-5 h-5 text-amber-400 flex-shrink-0" />
-              <div className="text-left">
-                <p className="text-xs font-bold text-white leading-none">Professional Chauffeur</p>
-                <span className="text-[10px] text-neutral-400">Mountain Experienced</span>
-              </div>
-            </div>
+            ))}
           </motion.div>
 
           <motion.div
@@ -135,21 +122,20 @@ export default function Hero({ onSearch, onInstantBook }: HeroProps) {
           >
             <button
               onClick={onInstantBook}
-              className="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-neutral-950 font-semibold px-8 py-3.5 rounded-xl transition-all shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold px-8 py-3.5 rounded-lg transition-all shadow-lg shadow-amber-500/20 text-xs uppercase tracking-wider cursor-pointer"
             >
-              <span>Instant Fleet Booking</span>
-              <ChevronRight className="w-4 h-4" />
+              Book Now
             </button>
             <a
               href={`https://wa.me/923485144199?text=Hello%20H%26M%20Brothers%2C%20I%20am%20interested%20in%20renting%20a%20luxury%20car.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-8 py-3.5 rounded-xl transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto border-2 border-neutral-700 hover:border-emerald-500 hover:bg-emerald-600/10 text-white font-bold px-8 py-3 rounded-lg transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2"
             >
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 fill-emerald-500" viewBox="0 0 24 24">
                 <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.665.988 3.511 1.509 5.4 1.51 5.561 0 10.085-4.526 10.088-10.09.002-2.695-1.047-5.228-2.951-7.136C17.279 1.53 14.76 1.48 12.013 1.48c-5.56 0-10.08 4.524-10.084 10.088-.001 1.884.501 3.73 1.455 5.372l-.988 3.605 3.663-.96zm12.062-7.855c-.328-.164-1.942-.958-2.242-1.069-.301-.11-.52-.164-.738.164-.219.329-.848 1.069-1.039 1.288-.192.219-.383.246-.711.082-.328-.164-1.386-.511-2.64-1.63-1.012-.903-1.694-2.018-1.892-2.347-.197-.329-.021-.507.143-.671.148-.147.328-.383.493-.574.164-.192.219-.329.328-.548.11-.219.055-.411-.027-.575-.082-.164-.738-1.78-1.01-2.438-.266-.643-.535-.556-.738-.556h-.629c-.219 0-.575.082-.876.411-.301.329-1.149 1.123-1.149 2.739 0 1.616 1.177 3.178 1.341 3.397.164.22 2.316 3.537 5.611 4.961.783.339 1.396.541 1.873.693.787.251 1.503.215 2.069.13.63-.095 1.942-.794 2.216-1.56.274-.767.274-1.424.192-1.56-.083-.137-.301-.219-.629-.383z" />
               </svg>
-              <span>WhatsApp Chat</span>
+              <span>WhatsApp Now</span>
             </a>
           </motion.div>
 
@@ -294,22 +280,17 @@ export default function Hero({ onSearch, onInstantBook }: HeroProps) {
 
         {/* 2. Headline & Dynamic Text */}
         <div className="space-y-3">
-          <div className="inline-flex items-center gap-1.5 bg-neutral-900/90 border border-neutral-800 px-3 py-1 rounded-full">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-            <span className="text-[10px] font-extrabold text-neutral-300 uppercase tracking-widest font-mono">
-              Open 24/7 At GPO Chowk
-            </span>
+          <div className="text-amber-500 text-[10px] font-black tracking-[0.15em] uppercase font-mono">
+            PREMIUM CAR RENTAL SERVICES
           </div>
           
-          <h1 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-white leading-tight">
-            Pakistan's Elite <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-amber-300">
-              Protocol & Luxury Cars
-            </span>
+          <h1 className="font-sans text-2xl sm:text-3xl font-black tracking-tight text-white leading-none uppercase">
+            TRAVEL IN COMFORT, <br />
+            <span className="text-amber-400">ARRIVE IN STYLE</span>
           </h1>
           
-          <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-md font-sans font-medium">
-            Saddar’s premier rental agency. Showroom-condition heavy SUVs, bridal cruisers, and luxury sedans with veteran protocol drivers.
+          <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed max-w-md font-sans font-medium">
+            We Provide Reliable, Luxury & Comfortable Car Rental Services Across Pakistan.
           </p>
         </div>
 

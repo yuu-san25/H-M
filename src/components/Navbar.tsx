@@ -27,16 +27,34 @@ export default function Navbar({ onRentClick, activePage, onPageChange }: Navbar
   const menuItems = [
     { label: 'Home', id: 'home' },
     { label: 'Our Fleet', id: 'fleet' },
+    { label: 'One-Way Drop', id: 'one-way-drop' },
+    { label: 'Cities', id: 'cities-booking' },
+    { label: 'Booking', id: 'cities-booking-form' },
+    { label: 'Payment', id: 'advance-payment' },
+    { label: 'Tours & Tourism', id: 'northern-tours' },
     { label: 'VIP Services', id: 'services' },
-    { label: 'Client Reviews', id: 'reviews' },
     { label: 'FAQs', id: 'faqs' },
-    { label: 'Contact Us', id: 'contact' },
   ];
 
   const handleNavClick = (id: string) => {
-    onPageChange(id);
-    setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (id === 'home' || id === 'fleet' || id === 'services' || id === 'faqs' || id === 'one-way-drop') {
+      onPageChange(id);
+      setMobileMenuOpen(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      onPageChange('home');
+      setMobileMenuOpen(false);
+      setTimeout(() => {
+        let elementId = id;
+        if (id === 'cities-booking-form') {
+          elementId = 'cities-booking';
+        }
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
   };
 
   return (

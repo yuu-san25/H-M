@@ -8,6 +8,12 @@ import Services from './components/Services';
 import Testimonials from './components/Testimonials';
 import FAQs from './components/FAQs';
 import AboutContact from './components/AboutContact';
+import FloatingSidebar from './components/FloatingSidebar';
+import CitiesAndBooking from './components/CitiesAndBooking';
+import NorthernTours from './components/NorthernTours';
+import AdvancePayment from './components/AdvancePayment';
+import OneWayDropCalculator from './components/OneWayDropCalculator';
+import RideSlideshow from './components/RideSlideshow';
 import { FLEET, CONTACT_INFO, REVIEWS } from './data';
 import { Car, Review } from './types';
 import { ShieldAlert, Phone, Sparkles, Star, ShieldCheck, Heart, ArrowUp, ChevronRight } from 'lucide-react';
@@ -121,6 +127,15 @@ export default function App() {
         }}
       />
 
+      {/* Premium Sticky Right Sidebar on Desktop */}
+      <FloatingSidebar 
+        onQuickBook={handleInstantBookTrigger}
+        onScrollToFleet={() => {
+          setCurrentPage('fleet');
+          scrollToTop();
+        }}
+      />
+
       {/* Main Page Rendering Router */}
       <main className="flex-grow">
         {currentPage === 'home' && (
@@ -138,58 +153,58 @@ export default function App() {
               onScrollToSection={handleSectionNavigate}
             />
 
-            {/* Featured Fleet Section on Homepage */}
-            <section className="py-20 bg-neutral-900 border-t border-b border-neutral-850 relative overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.02),transparent_70%)] pointer-events-none" />
-              
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-                  <div className="text-left">
-                    <span className="text-xs font-bold text-amber-500 uppercase tracking-widest font-mono block mb-2">Featured Showroom</span>
-                    <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight">
-                      PREMIUM RENTAL VEHICLES
-                    </h2>
-                    <p className="text-neutral-400 text-xs sm:text-sm mt-2 max-w-xl font-sans font-medium">
-                      Select from our showroom-condition elite models. Handpicked for comfort, prestige protocol, and absolute mechanical precision.
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => {
-                      setCurrentPage('fleet');
-                      scrollToTop();
-                    }}
-                    className="group inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold px-6 py-3 rounded-xl transition-all text-xs uppercase tracking-wider font-sans shadow-lg shadow-amber-500/10 cursor-pointer self-start md:self-auto"
-                  >
-                    <span>View Entire Fleet</span>
-                    <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </button>
-                </div>
+            {/* Featured Fleet Slideshow on Homepage */}
+            <RideSlideshow 
+              onBook={handleBookTrigger} 
+              onViewAll={() => { 
+                setCurrentPage('fleet'); 
+                scrollToTop(); 
+              }} 
+            />
 
-                {/* Car Grid */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {[
-                    FLEET.find(c => c.id === 'toyota-land-cruiser') || FLEET[2] || FLEET[0],
-                    FLEET.find(c => c.id === 'audi-a6') || FLEET[3] || FLEET[0],
-                    FLEET.find(c => c.id === 'toyota-prado') || FLEET[1] || FLEET[0]
-                  ].map((car) => (
-                    <CarCard
-                      key={car.id}
-                      car={car}
-                      onBook={handleBookTrigger}
-                    />
-                  ))}
-                </div>
-              </div>
-            </section>
+            {/* One-Way Intercity Drops Dynamic Calculator */}
+            <OneWayDropCalculator 
+              onSuccessBooking={(details) => {
+                const activeCar = FLEET.find(c => details.includes(c.name)) || FLEET[0];
+                setSelectedCar({
+                  ...activeCar,
+                  name: `${activeCar.name} (One-Way Drop)`,
+                  description: details
+                });
+                setBookingModalOpen(true);
+              }}
+            />
+
+            {/* Cities & Quick Booking (Side-by-Side as per ChatGPT design) */}
+            <CitiesAndBooking 
+              onSuccessBooking={(details) => console.log('Quick booking created:', details)}
+              onInstantBook={handleInstantBookTrigger}
+            />
+
+            {/* Northern Pakistan Tourism Packages */}
+            <NorthernTours 
+              onBookTour={(tourName) => {
+                // Select Land Cruiser or Prado as default for tours
+                const tourCar = FLEET.find(c => c.id === 'toyota-land-cruiser') || FLEET[0];
+                setSelectedCar({
+                  ...tourCar,
+                  name: `${tourCar.name} (${tourName})`,
+                  description: `Customized tour package booking for ${tourName}. Includes mountain-experienced professional chauffeur, complete fuel management options, and continuous support.`
+                });
+                setBookingModalOpen(true);
+              }}
+            />
+
+            {/* Advance Payment Details & Bank Credentials (Highly accurate local touch) */}
+            <AdvancePayment />
 
             {/* Services Specialties Brief */}
-            <div className="bg-neutral-950 relative py-8 border-t border-neutral-900">
+            <div className="bg-neutral-900 relative py-8 border-t border-neutral-950">
               <Services />
             </div>
 
             {/* Testimonials Slideshow Brief (Without submission form on Home) */}
-            <div className="bg-neutral-900">
+            <div className="bg-neutral-950">
               <Testimonials reviews={reviews.slice(0, 3)} onAddReview={handleReviewAdd} showForm={false} />
             </div>
           </div>
@@ -341,6 +356,37 @@ export default function App() {
 
               </div>
             </section>
+          </div>
+        )}
+
+        {currentPage === 'one-way-drop' && (
+          <div>
+            {/* One-Way Page Title Header */}
+            <div className="py-20 pt-32 bg-neutral-900/40 border-b border-neutral-900">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+                <span className="text-xs font-bold text-amber-500 uppercase tracking-widest font-mono block mb-3">ONE-WAY INTERCITY FARES</span>
+                <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-black text-white leading-none tracking-tighter uppercase">DYNAMIC DROPS CALCULATOR</h1>
+                <p className="text-zinc-400 text-xs sm:text-sm mt-3 max-w-xl leading-relaxed font-sans">
+                  Instantly estimate and lock fixed-rate, one-way drops across major routes in Pakistan. Includes premium fuel options, motorway tolls, and professional driver returning allowances with zero hidden fees.
+                </p>
+                <div className="w-16 h-1 bg-amber-500 mt-5 rounded-full" />
+              </div>
+            </div>
+
+            <div className="py-4 bg-neutral-950">
+              <OneWayDropCalculator
+                onSuccessBooking={(details) => {
+                  // Prepopulate custom booking details or display alert
+                  const activeCar = FLEET.find(c => details.includes(c.name)) || FLEET[0];
+                  setSelectedCar({
+                    ...activeCar,
+                    name: `${activeCar.name} (One-Way Drop)`,
+                    description: details
+                  });
+                  setBookingModalOpen(true);
+                }}
+              />
+            </div>
           </div>
         )}
 
